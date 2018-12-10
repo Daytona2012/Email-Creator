@@ -1,0 +1,52 @@
+
+public class emailCreator {
+
+public static void main(String args[]) {
+    	
+		//HTML Variable
+		String [] csv = {"   james   ,butler,jbutler@gmail.com",
+                "Josephine,Darakjy,Josephine_Darakjy@darakjy.org",
+                "ART,VENERE,ART@VENERE.ORG"};
+		
+		String template =
+			    "To:      {email}\n" +
+			    "From:    noreply@deals.com\n" +
+			    "Subject: Deals!\n\n" +
+			    "Hi {first_name},\n\n" +
+			    "We've got some great deals for you. Check our website!";
+		
+		System.out.println("Email Creator");
+		
+		for(int i = 0; i<csv.length; i++){
+
+			//splitting the string which contain firstname, last name, email address
+			String temp[]= csv[i].split(",");
+
+			//taking the first name and trim the white spaces back and front of the string
+			String firstName = temp[0].trim();
+
+			//change it to title case so taking first character and
+			//changing it to upper case then adding string from index 1
+			String modifiedFirstName=(firstName.charAt(0)+"").toUpperCase()+firstName.substring(1);
+
+			//taking email
+			String email = temp[2].trim();
+
+			//replace template string email with my email
+			String result = template.replace("{email}", email.toLowerCase());
+
+			//replacing first name
+			result = result.replace("{first_name}", modifiedFirstName);
+
+			System.out.println("================================================================");
+
+			//printing results
+			System.out.println(result);
+
+			}
+
+			System.out.println();
+    	
+    }
+	
+}
